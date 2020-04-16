@@ -1,28 +1,13 @@
-def overload(arg):
-    print(arg)
+import numpy as np
+import copy
 
-    def outer(function_to_decorate):
-        def a_wrapper_accepting_arbitrary_arguments(*args):
-            result = function_to_decorate(*args)
-            return result
+matrix1 = np.array([[1, 2, 3], [4, 5, 6]])
+print(matrix1)
+matrix2 = np.array([[.0, .0, .0], [.0, .0, .0]])
 
-        return a_wrapper_accepting_arbitrary_arguments
+for i in range(0, 2):
+    for j in range(0, 3):
+        res = float(matrix1[i][j])
+        matrix2[i][j] = res
 
-    return outer
-
-
-@overload('one')
-def function(x):
-    print("Один аргумент {}", x)
-
-
-@overload('two')
-def function(x, b):
-    print('Два аргумента {},{}', x, b)
-
-
-@overload('tree')
-def function(a, b, c):
-    print("Три аргумента")
-
-    overload('one').function(1)
+print(matrix2)
